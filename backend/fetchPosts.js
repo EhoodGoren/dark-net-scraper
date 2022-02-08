@@ -10,11 +10,7 @@ const fetchPosts = async () => {
             port: 8118
         }
     });
-    const $ = cheerio.load(pageFetch.data, {
-        xml: {
-            normalizeWhitespace: true,
-        }
-    });
+    const $ = cheerio.load(pageFetch.data, {});
     const posts = $('#list > .row > .col-sm-12');
     return posts.map((_i, post) => {
         const title = $(post).find('h4').text();
