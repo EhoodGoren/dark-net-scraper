@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from 'axios';
+import Post from "./Post";
 
 const Posts = () => {
     const [posts, setPosts] = useState([]);
@@ -10,23 +11,10 @@ const Posts = () => {
     }
     const generatePosts = () => {
         return posts.map((post, index) => {
-            const { title, content, author, date } = post;
             return(
-                <div key={`post${index+1}`} className='posts'>
-                    <h3 className='post-title'>{title}</h3>
-                    <div className='post-content'>{generateContent(content)}</div>
-                    <div className='post-source'>
-                        {author} | {`${date} UTC`}
-                    </div>
-                </div>
+                <Post key={`post-${index}`} data={post} />
             )
         });
-    }
-    const generateContent = (content) => {
-        const splitContent = content.split('\n');
-        return splitContent.map((sentence, index) => (
-            <p key={`sentence${index}`}>{sentence}</p>
-        ));
     }
 
     return (
