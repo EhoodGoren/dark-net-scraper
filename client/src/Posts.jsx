@@ -13,14 +13,21 @@ const Posts = () => {
             const { title, content, author, date } = post;
             return(
                 <div key={`post${index+1}`} className='posts'>
-                    <h3>{title}</h3>
-                    <div>{content}</div>
-                    <div>{author}</div>
-                    <div>{date}</div>
+                    <h3 className='post-title'>{title}</h3>
+                    <div className='post-content'>{generateContent(content)}</div>
+                    <div className='post-author'>{author}</div>
+                    <div className='post-author'>{date}</div>
                 </div>
             )
-        })
+        });
     }
+    const generateContent = (content) => {
+        const splitContent = content.split('\n');
+        return splitContent.map((sentence, index) => (
+            <p key={`sentence${index}`}>{sentence}</p>
+        ));
+    }
+
     return (
         <div>
             <button onClick={getPosts}>Get posts</button>
