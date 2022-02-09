@@ -15,8 +15,9 @@ const Posts = () => {
                 <div key={`post${index+1}`} className='posts'>
                     <h3 className='post-title'>{title}</h3>
                     <div className='post-content'>{generateContent(content)}</div>
-                    <div className='post-author'>{author}</div>
-                    <div className='post-author'>{date}</div>
+                    <div className='post-source'>
+                        {author} | {`${date} UTC`}
+                    </div>
                 </div>
             )
         });

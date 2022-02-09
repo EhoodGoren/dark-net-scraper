@@ -11,16 +11,25 @@ const fetchPosts = async () => {
         }
     });
     const $ = cheerio.load(pageFetch.data, {});
-    const posts = $('#list > .row > .col-sm-12');
+    const posts = $('#list > .row:not(.text-center) > .col-sm-12');
     return posts.map((_i, post) => {
         const title = $(post).find('h4').text();
-        const author = $(post).find('.col-sm-6').text()
+        const source = $(post).find('.col-sm-6').text();
+        const { date, author } = deconstructSource(source);
         const contentParts = $(post).find('ol > li');
         const content = contentParts.map((_i, sentence) => {
             return $(sentence).text();
         }).get().join('\n');
-        return { title, content, author };
+        return { title, content, author, date };
     }).get();
+}
+
+const deconstructSource = (source) => {
+    const dateRegex = /[0-9]{2} [a-zA-Z]+ [0-9]{4}, [0-9]{2}:[0-9]{2}:[0-9]{2} [a-zA-Z]+/;
+    const dateMatch = source.match(dateRegex);
+    const date = new Date(dateMatch[0]);
+    const author = source.slice(0, dateMatch.index - 3);
+    return { date, author };
 }
 
 module.exports = fetchPosts;
