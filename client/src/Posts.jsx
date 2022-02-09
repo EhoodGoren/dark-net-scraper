@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import axios from 'axios';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
 import Post from "./Post";
 
 const Posts = () => {
@@ -9,18 +11,17 @@ const Posts = () => {
         const fetchedPosts = await axios.get('http://localhost:8080/posts');
         setPosts(fetchedPosts.data);
     }
-    const generatePosts = () => {
-        return posts.map((post, index) => {
-            return(
-                <Post key={`post-${index}`} data={post} />
-            )
-        });
-    }
 
     return (
-        <div>
+        <div style={{backgroundColor: '#D4D4D6'}}>
             <button onClick={getPosts}>Get posts</button>
-            {generatePosts()}
+            <Container >
+                <Row className="gap-3" xs={3}>
+                    {posts.map((post, index) => (
+                        <Post key={`post-${index}`} data={post} />
+                    ))}
+                </Row>
+            </Container>
         </div>
     )
 }
