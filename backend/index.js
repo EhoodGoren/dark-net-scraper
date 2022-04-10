@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const postsRouter = require('./backend/routers/postsRouter');
+const postsRouter = require('./routers/postsRouter');
 
 const port = 8080;
 const app = express();
