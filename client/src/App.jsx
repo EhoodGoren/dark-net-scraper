@@ -1,10 +1,8 @@
-import React from "react";
-import Posts from "./Posts";
+import React from 'react';
+import Posts from './Posts';
 
 const App = () => {
-    return (
-        <Posts />
-    )
-}
+    return <Posts />;
+};
 
 export default App;
