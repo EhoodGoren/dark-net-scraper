@@ -9,18 +9,15 @@ const Post = ({ data: { title, content, author, date } }) => {
         ));
     };
     return (
-        <>
-            <Card className="mb-2" border="dark" style={{ width: '22rem' }}>
-                <Card.Header as="h6">{title}</Card.Header>
-                <Card.Body>
-                    {generateContent(content)}
-                    <footer className="blockquote-footer">
-                        {author} | {date}
-                    </footer>
-                </Card.Body>
-            </Card>
-            <br />
-        </>
+        <Card border="dark">
+            <Card.Header as="h6">{title}</Card.Header>
+            <Card.Body>
+                {generateContent(content)}
+                <footer className="blockquote-footer">
+                    {author} | {date}
+                </footer>
+            </Card.Body>
+        </Card>
     );
 };
 

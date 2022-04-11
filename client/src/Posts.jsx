@@ -16,11 +16,11 @@ const Posts = () => {
         <div style={{ backgroundColor: '#D4D4D6' }}>
             <button onClick={getPosts}>Get posts</button>
             <Container>
-                <Row className="gap-3" xs={3}>
-                    {posts.map((post, index) => (
-                        <Post key={`post-${index}`} data={post} />
-                    ))}
-                </Row>
+                {posts.map((post, index) => (
+                    <Row className="mb-3" key={`post-${index}`}>
+                        <Post data={post} />
+                    </Row>
+                ))}
             </Container>
         </div>
     );
