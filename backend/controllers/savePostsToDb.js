@@ -16,10 +16,11 @@ const filterExistingPosts = async (posts) => {
 const savePostsToDb = async (posts) => {
     try {
         const nonExistingPosts = await filterExistingPosts(posts);
-        if (nonExistingPosts.length === 0) return;
-        await Post.insertMany(nonExistingPosts);
+        if (nonExistingPosts.length > 0) {
+            await Post.insertMany(nonExistingPosts);
+        }
     } catch (error) {
-        throw error;
+        console.log(error);
     }
 };
 
