@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+    proxy:
+        image: dperson/torproxy
+        ports:
+            - '8118:8118'
+            - '9050:9050'
+
+    server:
+        build: ./backend
+        image: ehoodgoren/scraper-server:latest
+        depends_on:
+            - proxy
+        restart: always
+        ports:
+            - '8080:8080'
+        environment:
+            - HTTP_PROXY=http://proxy:8118
+            - HTTPs_PROXY=https://proxy:8118
+
+    client:
+        build: ./client
+        image: ehoodgoren/scraper-client:latest
+        depends_on:
+            - server
+        restart: always
+        ports:
+            - '3000:3000'

@@ -1,3 +1,4 @@
+require('dotenv').config();
 const axios = require('axios');
 const cheerio = require('cheerio');
 const { pageMock } = require('../mocks/pageMock');
@@ -6,15 +7,19 @@ const pageUrl =
     'http://strongerw2ise74v3duebgsvug4mehyhlpa7f6kfwnas7zofs3kov7yd.onion/all';
 
 const fetchPosts = async () => {
+    const options = process.env.NODE_ENV
+        ? {
+              proxy: {
+                  host: 'localhost',
+                  port: 8118,
+              },
+          }
+        : {};
     try {
-        const pageFetch = await axios.get(pageUrl, {
-            proxy: {
-                host: 'localhost',
-                port: 8118,
-            },
-        });
+        const pageFetch = await axios.get(pageUrl, options);
         return extractContent(pageFetch);
     } catch (error) {
+        console.log(error);
         return extractContent({
             data: pageMock,
         });
