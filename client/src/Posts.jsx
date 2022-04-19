@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Post from './Post';
 import Loader from './Loader/Loader';
+import SearchBar from './SearchBar';
 
 const Posts = () => {
     const [posts, setPosts] = useState([]);
@@ -24,6 +25,7 @@ const Posts = () => {
         <div style={{ backgroundColor: '#D4D4D6' }}>
             {loading ? <Loader /> : <></>}
             <Container>
+                <SearchBar setPosts={setPosts} />
                 {posts.map((post, index) => (
                     <Row className="mb-3" key={`post-${index}`}>
                         <Post data={post} />
