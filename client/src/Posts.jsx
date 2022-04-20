@@ -25,7 +25,7 @@ const Posts = () => {
         <div style={{ backgroundColor: '#D4D4D6' }}>
             {loading ? <Loader /> : <></>}
             <Container>
-                <SearchBar setPosts={setPosts} />
+                <SearchBar setPosts={setPosts} setLoading={setLoading} />
                 {posts.map((post, index) => (
                     <Row className="mb-3" key={`post-${index}`}>
                         <Post data={post} />

@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import axios from 'axios';
 import Form from 'react-bootstrap/Form';
 
-const SearchBar = ({ setPosts }) => {
+const SearchBar = ({ setPosts, setLoading }) => {
     const searchValue = useRef('');
     const debounce = useRef();
 
@@ -11,14 +11,17 @@ const SearchBar = ({ setPosts }) => {
             clearTimeout(debounce.current);
         }
         const pastValue = searchValue.current.value;
+        if (pastValue === '') return;
         debounce.current = setTimeout(async () => {
             const currentValue = searchValue.current.value;
             if (pastValue === currentValue) {
                 try {
+                    setLoading(true);
                     const response = await axios.get(
                         `http://localhost:8080/posts/search/${currentValue}`
                     );
                     setPosts(response.data);
+                    setLoading(false);
                 } catch (error) {
                     setPosts([]);
                 }
