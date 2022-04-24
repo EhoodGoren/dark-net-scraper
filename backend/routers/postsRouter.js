@@ -4,7 +4,7 @@ const savePostsToDb = require('../controllers/savePostsToDb');
 const formatPosts = require('../controllers/formatPosts');
 const getPostsByQuery = require('../controllers/getPostsByQuery');
 const filterNonExistingPosts = require('../controllers/filterExistingPosts');
-const analyzePosts = require('../controllers/analyze/analyzePosts');
+const addLabelsToPosts = require('../controllers/analyze/analyzePosts');
 
 const router = express.Router();
 

@@ -17,6 +17,10 @@ const postSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    labels: {
+        type: [String],
+        required: true,
+    },
 });
 
 module.exports = mongoose.model('Post', postSchema);

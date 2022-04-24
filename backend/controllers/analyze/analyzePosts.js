@@ -30,7 +30,7 @@ const analyzeText = (text) => {
     return labels;
 };
 
-const analyzePosts = (posts) => {
+const addLabelsToPosts = (posts) => {
     if (!posts) return;
     return posts.map((post) => {
         const { title, content } = post;
@@ -42,4 +42,4 @@ const analyzePosts = (posts) => {
     });
 };
 
-module.exports = analyzePosts;
+module.exports = addLabelsToPosts;
