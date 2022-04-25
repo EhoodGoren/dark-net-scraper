@@ -3,7 +3,7 @@ import axios from 'axios';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Post from './Post';
-import Loader from './Loader/Loader';
+import Loader from '../Loader/Loader';
 import SearchBar from './SearchBar';
 
 const Posts = () => {

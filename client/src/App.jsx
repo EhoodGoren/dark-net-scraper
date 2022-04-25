@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import LayoutWithNavbar from './LayoutWithNavbar';
-import Posts from './Posts';
-import StatsChart from './StatsChart';
+import LayoutWithNavbar from './Components/Navbar/LayoutWithNavbar';
+import Posts from './Components/Posts/Posts';
+import StatsChart from './Components/Stats/StatsChart';
 
 const App = () => {
     return (

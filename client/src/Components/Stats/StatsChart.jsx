@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import 'chart.js/auto';
 import axios from 'axios';
 import { Pie } from 'react-chartjs-2';
-import Loader from './Loader/Loader';
+import Loader from '../Loader/Loader';
 
 const StatsChart = () => {
     const [loading, setLoading] = useState(false);
