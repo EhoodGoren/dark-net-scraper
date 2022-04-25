@@ -44,7 +44,7 @@ const SearchBar = ({ setPosts, setLoading }) => {
         <Form className="d-flex">
             <Form.Control
                 type="search"
-                placeholder="Search"
+                placeholder="Search for entry..."
                 className="mx-2 mt-2"
                 aria-label="Search"
                 onChange={handleChange}

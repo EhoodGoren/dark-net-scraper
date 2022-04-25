@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import 'chart.js/auto';
 import axios from 'axios';
-import { Pie } from 'react-chartjs-2';
+import { Doughnut } from 'react-chartjs-2';
 import Loader from '../Loader/Loader';
+import './StatsChart.css';
 
 const StatsChart = () => {
     const [loading, setLoading] = useState(false);
@@ -40,10 +41,10 @@ const StatsChart = () => {
     }, []);
 
     return (
-        <>
+        <div className="chart-container">
             {loading ? <Loader /> : <></>}
-            {Object.keys(data).length > 0 ? <Pie data={data} /> : <></>}
-        </>
+            {Object.keys(data).length > 0 ? <Doughnut data={data} /> : <></>}
+        </div>
     );
 };
 
