@@ -10,12 +10,12 @@ const router = express.Router();
 
 router.get('/', async (req, res) => {
     const posts = await fetchPosts();
-    const nonExistingPosts = filterNonExistingPosts(posts);
+    const postsWithLabels = addLabelsToPosts(posts);
+    const nonExistingPosts = await filterNonExistingPosts(postsWithLabels);
     if (nonExistingPosts.length > 0) {
-        const postsWithLabels = analyzePosts(posts);
-        await savePostsToDb(postsWithLabels);
+        await savePostsToDb(nonExistingPosts);
     }
-    const formatedPosts = formatPosts(posts);
+    const formatedPosts = formatPosts(postsWithLabels);
     res.send(formatedPosts);
 });
 

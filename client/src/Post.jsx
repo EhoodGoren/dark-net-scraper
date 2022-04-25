@@ -1,7 +1,8 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
+import Labels from './Labels';
 
-const Post = ({ data: { title, content, author, date } }) => {
+const Post = ({ data: { title, content, author, date, labels } }) => {
     const generateContent = (postContent) => {
         const splitContent = postContent.split('\n');
         return splitContent.map((sentence, index) => (
@@ -16,6 +17,7 @@ const Post = ({ data: { title, content, author, date } }) => {
                 <footer className="blockquote-footer">
                     {author} | {date}
                 </footer>
+                <Labels labels={labels} />
             </Card.Body>
         </Card>
     );
