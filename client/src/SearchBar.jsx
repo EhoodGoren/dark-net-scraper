@@ -33,7 +33,7 @@ const SearchBar = ({ setPosts, setLoading }) => {
             <Form.Control
                 type="search"
                 placeholder="Search"
-                className="me-2"
+                className="mx-2 mt-2"
                 aria-label="Search"
                 onChange={handleChange}
                 ref={searchValue}

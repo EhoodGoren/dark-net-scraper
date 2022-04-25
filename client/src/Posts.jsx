@@ -26,8 +26,9 @@ const Posts = () => {
             {loading ? <Loader /> : <></>}
             <Container>
                 <SearchBar setPosts={setPosts} setLoading={setLoading} />
+                <br />
                 {posts.map((post, index) => (
-                    <Row className="mb-3" key={`post-${index}`}>
+                    <Row className="m-3 g-0" key={`post-${index}`}>
                         <Post data={post} />
                     </Row>
                 ))}
