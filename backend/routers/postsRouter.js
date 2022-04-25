@@ -5,6 +5,7 @@ const formatPosts = require('../controllers/formatPosts');
 const getPostsByQuery = require('../controllers/getPostsByQuery');
 const filterNonExistingPosts = require('../controllers/filterExistingPosts');
 const addLabelsToPosts = require('../controllers/analyze/analyzePosts');
+const getStats = require('../controllers/getStats');
 
 const router = express.Router();
 
@@ -24,6 +25,11 @@ router.get('/search/:query', async (req, res) => {
     const matchingPosts = await getPostsByQuery(query);
     const formatedPosts = formatPosts(matchingPosts);
     res.send(formatedPosts);
+});
+
+router.get('/stats', async (req, res) => {
+    const stats = await getStats();
+    res.send(stats);
 });
 
 module.exports = router;
