@@ -8,10 +8,10 @@ const LayoutWithNavbar = ({ component }) => {
     return (
         <Container fluid className="p-0" style={{ height: '100vh' }}>
             <Row className="g-0" style={{ height: '100%' }}>
-                <Col sm={2} style={{ 'background-color': '#212529' }}>
+                <Col sm={2} style={{ backgroundColor: '#212529' }}>
                     <NavBar />
                 </Col>
-                <Col sm={10} style={{ 'background-color': '#D4D4D6' }}>
+                <Col sm={10} style={{ backgroundColor: '#D4D4D6' }}>
                     {component}
                 </Col>
             </Row>
