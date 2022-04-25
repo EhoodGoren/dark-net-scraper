@@ -11,19 +11,31 @@ const SearchBar = ({ setPosts, setLoading }) => {
             clearTimeout(debounce.current);
         }
         const pastValue = searchValue.current.value;
-        if (pastValue === '') return;
         debounce.current = setTimeout(async () => {
             const currentValue = searchValue.current.value;
             if (pastValue === currentValue) {
-                try {
-                    setLoading(true);
-                    const response = await axios.get(
-                        `http://localhost:8080/posts/search/${currentValue}`
-                    );
-                    setPosts(response.data);
-                    setLoading(false);
-                } catch (error) {
-                    setPosts([]);
+                if (currentValue === '') {
+                    try {
+                        setLoading(true);
+                        const response = await axios.get(
+                            'http://localhost:8080/posts'
+                        );
+                        setPosts(response.data);
+                        setLoading(false);
+                    } catch (error) {
+                        setPosts([]);
+                    }
+                } else {
+                    try {
+                        setLoading(true);
+                        const response = await axios.get(
+                            `http://localhost:8080/posts/search/${currentValue}`
+                        );
+                        setPosts(response.data);
+                        setLoading(false);
+                    } catch (error) {
+                        setPosts([]);
+                    }
                 }
             }
         }, 1500);
