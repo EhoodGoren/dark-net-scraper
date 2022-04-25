@@ -1,7 +1,7 @@
 require('dotenv').config();
 const axios = require('axios');
 const cheerio = require('cheerio');
-const { pageMock } = require('../mocks/pageMock');
+const { pageMock } = require('../../mocks/pageMock');
 
 const pageUrl =
     'http://strongerw2ise74v3duebgsvug4mehyhlpa7f6kfwnas7zofs3kov7yd.onion/all';

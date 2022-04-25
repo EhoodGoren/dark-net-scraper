@@ -1,4 +1,4 @@
-const Post = require('../models/post');
+const Post = require('../../models/post');
 
 const getPostsByQuery = async (query) => {
     const queryRegex = new RegExp(query, 'i');

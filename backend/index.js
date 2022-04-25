@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const postsRouter = require('./routers/postsRouter');
-const connectToDb = require('./controllers/connectToDb');
+const connectToDb = require('./controllers/db-managment/connectToDb');
 
 const port = 8080;
 const app = express();
